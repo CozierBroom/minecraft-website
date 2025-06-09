@@ -6,6 +6,7 @@ const navItems = [
   { name: "Contact", href: "/contact" },
   { name: "Donate", href: "/donate" },
 ];
+
 const currentPath = Astro.url.pathname;
 import '../styles/global.css';
 ---
@@ -36,16 +37,21 @@ import '../styles/global.css';
           About
         </a>
         </li>
-      {navItems.filter(item => item.name !== "Home" && item.name !== "About").map(item => (
-        <li>
-          <a 
-            href={item.href} 
-            class={currentPath === item.href ? "active" : ""}
-          >
-            {item.name}
-          </a>
-        </li>
-      ))}
+      <li>
+        <a href="/rules" class={currentPath === "/rules" ? "active" : ""}>
+          Rules
+        </a>
+      </li>
+      <li>
+        <a href="/donate" class={currentPath === "/donate" ? "active" : ""}>
+          Donate
+        </a>
+      </li>
+      <li>
+        <a href="/contact" class={currentPath === "/contact" ? "active" : ""}>
+          Contact
+        </a>
+      </li>
     </ul>
   </div>
 </nav>

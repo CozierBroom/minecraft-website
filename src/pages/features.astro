@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+---
+
+<BaseLayout>
+  <section class="features section">
+    <h2>All Features</h2>
+    <ul class="features-list">
+      <li>
+        <span class="icon">🧙‍♂️</span>
+        <div>
+          <h3>Magic & Custom Classes</h3>
+          <p>Master powerful spells and choose from unique classes to shape your adventure and playstyle.</p>
+        </div>
+      </li>
+      <li>
+        <span class="icon">🏰</span>
+        <div>
+          <h3>Player-run Towns & Castles</h3>
+          <p>Build, manage, and defend your own settlements with friends and allies.</p>
+        </div>
+      </li>
+      <li>
+        <span class="icon">🎉</span>
+        <div>
+          <h3>Regular Events & Tournaments</h3>
+          <p>Participate in server-wide events, tournaments, and seasonal challenges for exclusive rewards.</p>
+        </div>
+      </li>
+      <li>
+        <span class="icon">💰</span>
+        <div>
+          <h3>Custom Economy & Trading</h3>
+          <p>Engage in a player-driven economy, trade with others, and build your fortune through shops and markets.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+}
+
+.features-list li {
+  background: #222;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px #0003;
+  padding: 1.5em 1.2em;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2em;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.features-list li:hover {
+  border-color: var(--accent, #f5c542);
+  box-shadow: 0 4px 24px #0005;
+}
+
+.features-list .icon {
+  font-size: 2.2em;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+
+.features-list h3 {
+  margin: 0 0 0.3em 0;
+  font-size: 1.18em;
+  color: var(--primary);
+}
+
+.features-list p {
+  margin: 0;
+  color: var(--text-muted, #bdbdbd);
+  font-size: 1em;
+}
+</style>

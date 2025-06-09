@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+const description = "Read the official rules for The Shattered Crown Minecraft server. Stay safe, play fair, and help keep our community friendly!";
+---
+
+<BaseLayout title="Rules" description={description}>
+  <section class="rules section">
+    <h1 class="rules-title">Server Rules</h1>
+    <p class="rules-updated">Last updated: June 2025</p>
+
+    <div class="rules-group">
+      <h2 class="rules-section-title">Respect & Community</h2>
+      <hr class="rules-divider" />
+      <ol class="rules-list">
+        <li>
+          <span class="rule-badge">1</span>
+          <span class="rule-content"><strong>Respect all players:</strong> Harassment, discrimination, or hate speech of any kind will not be tolerated.</span>
+        </li>
+        <li>
+          <span class="rule-badge">2</span>
+          <span class="rule-content"><strong>Have fun and be kind:</strong> This is a community – let’s keep it welcoming for everyone.</span>
+        </li>
+        <li>
+          <span class="rule-badge">3</span>
+          <span class="rule-content"><strong>Follow staff instructions:</strong> Moderators and admins have the final say in all disputes and decisions.</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="rules-group">
+      <h2 class="rules-section-title">Fair Play & Cheating</h2>
+      <hr class="rules-divider" />
+      <ol class="rules-list">
+        <li>
+          <span class="rule-badge">1</span>
+          <span class="rule-content"><strong>No cheating or exploiting:</strong> Use of hacks, mods, or bugs to gain unfair advantages is strictly prohibited.</span>
+        </li>
+        <li>
+          <span class="rule-badge">2</span>
+          <span class="rule-content"><strong>No griefing:</strong> Destroying or stealing other players’ builds without permission is forbidden.</span>
+        </li>
+        <li>
+          <span class="rule-badge">3</span>
+          <span class="rule-content"><strong>No real-money trading:</strong> Buying, selling, or trading in-game items or ranks for real money outside official store is banned.</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="rules-group">
+      <h2 class="rules-section-title">Chat & Communication</h2>
+      <hr class="rules-divider" />
+      <ol class="rules-list">
+        <li>
+          <span class="rule-badge">1</span>
+          <span class="rule-content"><strong>Keep chat appropriate:</strong> Use respectful language; no spamming, advertising, or excessive profanity.</span>
+        </li>
+        <li>
+          <span class="rule-badge">2</span>
+          <span class="rule-content"><strong>Stay on-topic in forums and chats:</strong> Use designated channels for off-topic discussions.</span>
+        </li>
+        <li>
+          <span class="rule-badge">3</span>
+          <span class="rule-content"><strong>Report bugs and issues:</strong> Help us improve by reporting problems to the staff promptly.</span>
+        </li>
+      </ol>
+    </div>
+
+    <p class="rules-note">
+      Breaking these rules may result in a warning, mute, kick, or ban depending on severity.<br>
+      If you have questions, please ask a staff member or visit our <a href="/contact" class="cta-btn">Contact Staff</a> page.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+.rules.section {
+  background: #222;
+  border-radius: 14px;
+  margin: 2rem auto;
+  padding: 2.5rem 1.5rem;
+  max-width: 800px;
+  box-shadow: 0 2px 16px #0003;
+  border: 1.5px solid var(--primary, #c9a15a);
+}
+.rules-title {
+  color: var(--primary, #c9a15a);
+  font-size: 2.3em;
+  text-align: center;
+  margin-bottom: 0.2em;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #0008;
+}
+.rules-updated {
+  text-align: center;
+  color: #bfa76a;
+  font-size: 1em;
+  margin-bottom: 1.5em;
+  opacity: 0.8;
+}
+.rules-group {
+  margin-bottom: 2.5em;
+}
+.rules-section-title {
+  color: var(--primary, #c9a15a);
+  font-size: 1.35em;
+  font-weight: 700;
+  margin-bottom: 0.2em;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+.rules-divider {
+  border: none;
+  border-top: 2px solid var(--primary, #c9a15a);
+  width: 100%;
+  margin: 0.3em 0 1.2em 0;
+  opacity: 0.7;
+}
+.rules-list {
+  margin: 0 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+.rules-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.1em;
+  background: #181818;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px #0004;
+  padding: 0.7em 1em;
+  transition: all 0.18s;
+  border-left: 4px solid var(--primary, #c9a15a);
+  gap: 1em;
+}
+.rules-list li:hover {
+  background: #232323;
+  box-shadow: 0 4px 16px #0008;
+  transform: translateY(-2px) scale(1.02);
+  border-left: 4px solid #ffe08a;
+}
+.rule-badge {
+  background: var(--primary, #c9a15a);
+  color: #222;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 1px 4px #0006;
+  margin-right: 0.7em;
+  flex-shrink: 0;
+}
+.rule-content {
+  color: #fff;
+  font-size: 1.08em;
+}
+.rules-list strong {
+  color: var(--primary, #c9a15a);
+}
+.rules-note {
+  color: var(--primary, #c9a15a);
+  margin-top: 2em;
+  font-size: 1em;
+  text-align: center;
+}
+.cta-btn {
+  display: inline-block;
+  margin-top: 1.5em;
+  background: var(--primary, #c9a15a);
+  color: #222;
+  padding: 0.6em 1.4em;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #0004;
+  transition: background 0.2s, color 0.2s;
+}
+.cta-btn:hover {
+  background: #fffbe6;
+  color: #a07c2c;
+}
+@media (max-width: 700px) {
+  .rules.section {
+    padding: 1.2rem 0.5rem;
+  }
+  .rules-title {
+    font-size: 1.4em;
+  }
+  .rules-list li {
+    font-size: 1em;
+    padding: 0.5em 0.6em;
+  }
+  .rule-badge {
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1em;
+  }
+}
+</style>

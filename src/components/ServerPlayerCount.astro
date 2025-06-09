@@ -1,0 +1,168 @@
+---
+/* No async code up here */
+---
+
+<!-- Remove the outer .status-box if you don't want two boxes -->
+<!-- <div class="status-box"> -->
+
+  <div class="status-inner">
+    <span>
+      <span class="label">Server Status:</span>
+      <span
+        id="status-dot"
+        class="status-dot-glow"
+        style="font-size: 1.2em; line-height: 1; vertical-align: middle; display: inline-block; margin-left: 0.3em;"
+      >🟡</span>
+      <span id="status-text" class="value">Checking...</span>
+    </span>
+    <span class="sep">|</span>
+    <span>
+      <span class="label">Players Online:</span>
+      <span id="players" class="players-value">?</span>
+    </span>
+    <span class="sep">|</span>
+    <span>
+      <span class="label">Modpack</span>
+      <span id="modpack" class="modpack-value">?</span>
+    </span>
+  </div>
+<!-- </div> -->
+
+<style>
+.status-box {
+  background: var(--surface, #24211d);
+  border-radius: 10px;
+  box-shadow: 0 2px 16px #0003;
+  padding: 1.1rem 1.5rem;
+  margin: 0 1rem 2.5rem 1rem;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+.status-title {
+  text-align: center;
+  color: var(--primary);
+  font-size: 1.25em;
+  font-weight: 500;
+  margin-bottom: .1rem;
+  margin-top: 0;         /* Add this */
+  margin-block-start: 0; /* Add this for extra safety */
+  margin-block-end: .1rem; /* Add this for extra safety */
+  letter-spacing: 0.03em;
+}
+.status-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 0.92em;
+  font-weight: 500;
+  color: var(--primary);
+  min-height: 2.5em;
+  width: 100%;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  box-sizing: border-box;
+  margin: 0;
+  white-space: nowrap;
+  border: 1.2px solid var(--primary);
+  border-radius: 8px;
+  padding: 0.7em 2.5em; /* Increase horizontal padding for more gap */
+  background: rgba(0,0,0,0.12);
+}
+.label {
+  font-weight: bold;
+  color: var(--primary);
+  margin-right: 0.2em;
+}
+.value {
+  color: var(--text-main, #fdf6e3);
+  font-weight: bold;
+  margin-left: 0.3em;
+}
+.players-value {
+  color: var(--accent, #768a36);
+  font-weight: bold;
+  margin-left: 0.2em;
+}
+.modpack-value {
+  color: var(--text-muted, #bba474);
+  font-weight: bold;
+  margin-left: 0.2em;
+}
+.sep {
+  margin: 0 1em;
+  color: var(--primary);
+  user-select: none;
+}
+.status-dot-glow {
+  transition: filter 0.2s;
+}
+.status-dot-flash {
+  filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 16px #fff) !important;
+}
+@media (max-width: 600px) {
+  .status-inner {
+    gap: 0.5rem;
+    font-size: 0.95em;
+    padding: 0.7rem 0.2rem;
+    text-align: center;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+  .sep {
+    display: none;
+  }
+}
+</style>
+
+<script is:inline>
+  const serverIp = "mc.theshatteredcrown.net";
+  const modpack = "v1.0 (1.20.1)";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const statusDot = document.getElementById("status-dot");
+    if (statusDot) {
+      statusDot.style.filter = "drop-shadow(0 0 2px #ffe06680) drop-shadow(0 0 4px #ffe06680)";
+    }
+  });
+
+  async function fetchStatus() {
+    try {
+      const res = await fetch(`https://api.mcsrvstat.us/3/${serverIp}`);
+      const data = await res.json();
+
+      const statusDot = document.getElementById("status-dot");
+      const statusText = document.getElementById("status-text");
+      const players = document.getElementById("players");
+      const modpackEl = document.getElementById("modpack");
+
+      if (data.online) {
+        statusDot.textContent = "🟢";
+        statusDot.style.filter = "drop-shadow(0 0 2px #00ff6680) drop-shadow(0 0 4px #00ff6680)";
+        statusText.textContent = "Online";
+        players.textContent = `${data.players?.online ?? 0}/${data.players?.max ?? 0}`;
+      } else {
+        statusDot.textContent = "🔴";
+        statusDot.style.filter = "drop-shadow(0 0 2px #ff444480) drop-shadow(0 0 4px #ff444480)";
+        statusText.textContent = "Offline";
+        players.textContent = "0/0";
+      }
+
+      modpackEl.textContent = modpack;
+    } catch (e) {
+      const statusDot = document.getElementById("status-dot");
+      if (statusDot) {
+        statusDot.textContent = "";
+        statusDot.style.filter = "none";
+      }
+      document.getElementById("status-text").textContent = "Error";
+      document.getElementById("players").textContent = "?";
+      document.getElementById("modpack").textContent = "?";
+    }
+  }
+
+  fetchStatus();
+  setInterval(fetchStatus, 30000);
+</script>

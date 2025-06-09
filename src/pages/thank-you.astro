@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+---
+
+<BaseLayout>
+    <title>Thank You - Your Message Has Been Sent</title>
+  <section class="thankyou-section">
+    <h1 class="thankyou-title">Thank You!</h1>
+    <p class="thankyou-message">
+      Your message has been sent.<br>
+      Our staff will get back to you as soon as possible.
+    </p>
+    <a href="/" class="cta-btn">Return Home</a>
+  </section>
+</BaseLayout>
+
+<style>
+.thankyou-section {
+  background: #222;
+  border-radius: 14px;
+  margin: 3rem auto;
+  padding: 2.5rem 1.5rem;
+  max-width: 500px;
+  box-shadow: 0 2px 16px #0003;
+  border: 1.5px solid var(--primary, #c9a15a);
+  text-align: center;
+}
+.thankyou-title {
+  color: var(--primary, #c9a15a);
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #0008;
+}
+.thankyou-message {
+  color: #fff;
+  font-size: 1.15em;
+  margin-bottom: 2em;
+  opacity: 0.9;
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--primary, #c9a15a);
+  color: #222;
+  padding: 0.6em 1.4em;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 2px 8

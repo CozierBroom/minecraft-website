@@ -1,0 +1,210 @@
+---
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Rules", href: "/rules" },
+  { name: "Contact", href: "/contact" },
+  { name: "Donate", href: "/donate" },
+];
+const currentPath = Astro.url.pathname;
+import '../styles/global.css';
+---
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="logo">
+      <!-- Optional: Add your logo image below -->
+      <!-- <img src="/logo.png" alt="Server Logo" height="32" /> -->
+      The Shattered Crown
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <ul class="nav-links">
+      <li>
+        <a 
+          href="/" 
+          class={currentPath === "/" ? "active" : ""}
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/about" class={currentPath === "/about" ? "active" : ""}>
+          About
+        </a>
+        </li>
+      {navItems.filter(item => item.name !== "Home" && item.name !== "About").map(item => (
+        <li>
+          <a 
+            href={item.href} 
+            class={currentPath === item.href ? "active" : ""}
+          >
+            {item.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --primary: #c9a15a;
+}
+
+.navbar {
+  background: #222;
+  color: #fff;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid var(--primary);
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: 'MedievalSharp', serif;
+  font-size: 1.5rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+.logo img {
+  margin-right: 0.7em;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  margin: 0;
+  transition: right 0.3s;
+}
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s, background 0.2s;
+  padding: 0.4em 1em;
+  border-radius: 6px;
+  display: inline-block;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: #222;
+  background: var(--primary);
+  box-shadow: 0 2px 8px #c9a15a44;
+}
+
+/* Hamburger styles */
+.nav-toggle {
+  display: none;
+}
+.nav-toggle-label {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  gap: 5px;
+}
+.nav-toggle-label span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* Responsive styles */
+@media (max-width: 800px) {
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: -100vw;
+    background: #222;
+    flex-direction: column;
+    gap: 1.5em;
+    width: 200px;
+    padding: 1.5em 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px #000a;
+    z-index: 10;
+  }
+  .nav-toggle:checked ~ .nav-links {
+    right: 0;
+  }
+  .nav-toggle-label {
+    display: flex;
+    margin-left: auto;
+  }
+}
+
+/* Hide hamburger on desktop */
+@media (min-width: 801px) {
+  .nav-toggle-label {
+    display: none;
+  }
+}
+
+.dropdown-parent {
+  position: relative;
+  /* Remove flex styles to avoid alignment issues */
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-start; */
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: #232323;
+  border: 2px solid var(--primary);
+  border-radius: 0 0 10px 10px;
+  min-width: 100%;      /* At least as wide as the parent link */
+  width: max-content;   /* Only as wide as needed for content */
+  z-index: 10;
+  box-shadow: 0 4px 16px #0008;
+  padding: 0.2em 0;
+}
+
+.dropdown-parent:hover > .dropdown,
+.dropdown-parent:focus-within > .dropdown {
+  display: block;
+}
+
+.dropdown li {
+  width: 100%;
+}
+
+.dropdown a {
+  color: var(--primary);
+  padding: 0.5em 1em;    /* was 0.7em 1.2em */
+  font-size: 1em;        /* was 1.08em */
+  display: block;
+  font-family: 'Roboto', serif;
+  background: transparent;
+  border: none;
+  text-align: left;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.dropdown a:hover {
+  background: #181818;
+  color: #fff;
+}
+</style>

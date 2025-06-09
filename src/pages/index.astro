@@ -1,16 +1,304 @@
 ---
-
+import BaseLayout from '../components/BaseLayout.astro';
+import ServerPlayerCount from '../components/ServerPlayerCount.astro';
+const description = "Join The Shattered Crown Minecraft server: medieval fantasy, kingdoms, quests, dungeons, and a friendly community. Start your adventure today!";
 ---
+<BaseLayout title="Home" description={description}>
+  <section class="hero section">
+    <h1>Welcome to The Shattered Crown</h1>
+    <p class="subtitle">
+      Embark on your adventure in the ultimate medieval fantasy Minecraft server!
+    </p>
+  </section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <section class="about section">
+    <h2>About Our Server</h2>
+    <p>
+      The Shattered Crown offers a rich medieval world filled with kingdoms, quests, dungeons, and epic battles. Whether you’re a builder, a warrior, or a roleplayer, you’ll find your place in our thriving community.
+    </p>
+  </section>
+
+  <section class="status section">
+    <h4 class="status-title">Server Status</h4>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <ServerPlayerCount />
+    </div>
+  </section>
+
+  <section class="features section">
+    <h2>What Awaits You</h2>
+    <ul>
+      <li>🛡️ Factions & Kingdoms</li>
+      <li>🗺️ Custom World & Lore</li>
+      <li>🧙‍♂️ Magic & Custom Classes</li>
+    </ul>
+    <a href="/features" class="btn">See All Features</a>
+  </section>
+
+  <section class="join section">
+    <h2>How to Join</h2>
+    <ol>
+      <li>Launch Minecraft Java Edition (1.20+ recommended)</li>
+      <li>
+        Add server: 
+        <strong id="server-ip">mc.theshatteredcrown.net</strong>
+        <button class="copy-btn" onclick="navigator.clipboard.writeText('mc.theshatteredcrown.net')">Copy</button>
+      </li>
+      <li>Hop in and start your epic journey!</li>
+    </ol>
+  </section>
+
+  <section class="news section">
+    <h2>News & Announcements</h2>
+    <ul class="news-list">
+      <li>
+        <strong>June 9, 2025:</strong> 🎉 Summer event starts this weekend! Join for exclusive rewards.
+      </li>
+      <li>
+        <strong>June 1, 2025:</strong> 🏰 New dungeons added to the world!
+      </li>
+      <li>
+        <strong>May 20, 2025:</strong> 🛡️ Server updated to Minecraft 1.20.1.
+      </li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+:root {
+  --primary: #c9a15a;
+}
+
+.section {
+  background: #222;
+  border-radius: 12px;
+  margin-bottom: 3.5rem;
+  padding: 2.5rem 1.5rem;
+  box-shadow: 0 2px 16px #0003;
+  border: 3px solid var(--primary);
+  box-shadow: 0 0 12px #c9a15a44, 0 2px 16px #0003;
+}
+
+.section:not(:last-child) {
+  position: relative;
+}
+.section:not(:last-child)::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #444, transparent);
+  margin: 2.5rem 0 0 0;
+  width: 100%;
+}
+
+.hero.section {
+  background: #222;
+  border: 3px solid var(--primary);
+  border-radius: 12px;
+  box-shadow: 0 0 12px #c9a15a44, 0 2px 16px #0003;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+}
+
+.hero h1 {
+  color: var(--primary);
+  font-size: 2.4rem;
+  margin-bottom: 0.7em;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 1.7rem;
+}
+
+.about, .features, .join, .news, .status {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin-bottom: 0.6em;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4em;
+}
+h4 {
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3em;
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* was 1.2rem */
+  justify-content: center;
+}
+.features li {
+  background: #222;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  min-width: 190px;
+  text-align: center;
+  font-size: 1.05em;
+  margin-bottom: 0; /* remove if present */
+}
+.join ol {
+  margin-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: #222;
+  border: none;
+  padding: .65em 2em;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 1.2em;
+  box-shadow: 0 2px 12px #0004;
+  transition: background 0.2s, color 0.2s;
+}
+.btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.news-list li {
+  margin-bottom: 1em;
+  background: #181818;
+  border-left: 4px solid var(--primary);
+  padding: 0.8em 1em;
+  border-radius: 6px;
+  color: var(--text-main);
+}
+
+.status {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.status h2 {
+  margin-bottom: 1em;
+}
+
+.status-title {
+  font-size: 1.6rem;        /* Match h2 size */
+  color: var(--primary);    /* Match h2 color */
+  margin-bottom: 0.6em;     /* Match h2 spacing */
+  font-weight: 500;         /* Match h2 weight */
+  letter-spacing: 0.03em;
+  text-align: left;
+}
+
+.status-box {
+  background: var(--surface, #24211d);
+  border: 1.5px solid var(--primary);
+  border-radius: 10px;
+  box-shadow: 0 2px 16px #0003;
+  padding: 1.1rem 1.5rem;
+  margin: 0 1rem 2.5rem 1rem; /* gap on both sides */
+  max-width: 900px;
+  font-size: 1.08em;
+  box-sizing: border-box;
+}
+
+.social-links {
+  margin: 1.5em 0 0 0;
+  display: flex;
+  gap: 1.2em;
+  justify-content: center;
+}
+.social-links img {
+  width: 2.2em;
+  height: 2.2em;
+  filter: grayscale(0.2) brightness(1.2);
+  transition: filter 0.2s;
+}
+.social-links img:hover {
+  filter: none;
+}
+
+.testimonials .quotes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+}
+.testimonials blockquote {
+  background: #181818;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  color: var(--text-main);
+  max-width: 320px;
+  margin: 0;
+}
+.testimonials footer {
+  color: var(--text-muted);
+  font-size: 0.95em;
+  margin-top: 0.5em;
+  text-align: right;
+}
+
+.copy-btn {
+  margin-left: 0.7em;
+  background: var(--primary);
+  color: #222;
+  border: none;
+  border-radius: 5px;
+  padding: 0.2em 0.8em;
+  font-size: 0.98em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.copy-btn:hover {
+  background: var(--accent, #f5c542);
+}
+
+.home-box {
+  border: 2px solid var(--primary, #c9a15a);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px #0002;
+  padding: 1.5em;
+  background: #232323;
+}
+
+@media (max-width: 600px) {
+  .features ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .features li {
+    min-width: 0;
+    width: 100%;
+  }
+  .testimonials .quotes {
+    flex-direction: column;
+    gap: 1em;
+  }
+  .section {
+    padding: 1.2rem 0.7rem;
+  }
+  .social-links {
+    justify-content: center;
+  }
+}
+</style>

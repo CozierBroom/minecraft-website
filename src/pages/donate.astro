@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+const description = "Support our Minecraft server! Your donations help keep the server running and improve the community.";
+---
+
+<BaseLayout title="Donate">
+  <main class="donate-main">
+    <!-- Branding -->
+    <h1 class="donate-title">Support the Server</h1>
+    <p class="donate-desc">
+      Running this server takes time and resources. Your donation helps cover hosting costs and keeps our community thriving.<br>
+      <strong>Thank you for your support!</strong>
+    </p>
+
+    <div class="donate-box">
+      <div class="donate-buttons">
+        <a href="https://ko-fi.com/shatteredcrown" target="_blank" rel="noopener" class="donate-btn">
+          💖 Donate Now
+        </a>
+      </div>
+      <p class="donate-small">
+        Every bit helps! If you have questions or want to donate another way, <a href="https://discord.gg/yourinvite">contact us on Discord</a>.
+      </p>
+    </div>
+
+    <section class="thank-you">
+      <strong>Thank you for supporting our community!</strong>
+    </section>
+  </main>
+
+  <style>
+    .donate-main {
+      border: 3px solid var(--primary);
+      border-radius: 16px;
+      background: var(--surface);
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      box-shadow: 0 0 24px #000a;
+    }
+
+    .donate-title {
+      color: var(--primary);
+      font-size: 2.6em;
+      text-align: center;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+
+    .donate-desc {
+      text-align: center;
+      color: #fffbe6;
+      font-size: 1.1em;
+    }
+
+    .donate-box {
+      max-width: 500px;
+      margin: 2em auto;
+      background: var(--surface);
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      box-shadow: 0 4px 24px #000a;
+      padding: 2em 1.5em 1.5em 1.5em;
+      text-align: center;
+    }
+
+    .donate-small {
+      color: #fffbe6;
+      text-align: center;
+      margin-top: 1em;
+    }
+
+    .donate-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin: 0;
+    }
+
+    .donate-btn {
+      background: #e0b84c;
+      color: #23273a;
+      padding: 0.8em 2em;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.15em;
+      display: inline-block;
+      box-shadow: 0 0 16px 2px #bfa04655;
+      transition: background 0.2s, color 0.2s, box-shadow 0.3s;
+    }
+
+    .donate-btn:hover,
+    .donate-btn:focus {
+      background: var(--primary);
+      color: #fffbe6;
+      box-shadow: 0 0 24px 6px #bfa046aa;
+      text-decoration: none;
+    }
+
+    section {
+      margin: 2rem 0;
+    }
+
+    .thank-you {
+      margin-top: 2rem;
+      background: var(--surface);
+      padding: 1rem;
+      border-radius: 4px;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: var(--accent);
+    }
+  </style>
+</BaseLayout>

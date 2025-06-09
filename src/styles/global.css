@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+:root {
+  --primary: #c9a15a;
+  --background: #171512;
+  --surface: #24211d;
+  --text-main: #fdf6e3;
+  --text-muted: #bba474;
+  --accent: #768a36;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #282828; /* Slightly lighter for better contrast */
+  color: #fff;         /* Pure white text for maximum readability */
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  line-height: 1.7;
+  font-size: 1.12rem;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 0 24px #000a;
+  padding: 2rem;
+}
+
+h1, h2, h3, h4 {
+  color: var(--primary);
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  letter-spacing: 0.04em;
+  margin-bottom: .5em;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--accent);
+}
+
+ul, ol {
+  margin-left: 2em;
+  margin-bottom: 1em;
+}
+
+button, .btn {
+  background: var(--primary);
+  color: #222;
+  border: none;
+  padding: .5em 1.5em;
+  border-radius: 6px;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+}
+button:hover, .btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}

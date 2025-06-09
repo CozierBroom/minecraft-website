@@ -3,6 +3,8 @@
 const { title, description } = Astro.props;
 import Navbar from './Navbar.astro';
 import Footer from './Footer.astro';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 <html lang="en">
   <head>
@@ -22,5 +24,7 @@ import Footer from './Footer.astro';
       <slot />
     </main>
     <Footer />
+    <Analytics />
+    <SpeedInsights />
   </body>
 </html>

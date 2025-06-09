@@ -107,14 +107,17 @@ import '../styles/global.css';
   font-size: 1.1rem;
   border: none;
   background: none;
+  box-shadow: none;
+  border-bottom: none; /* Remove underline/border */
 }
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a.active,
+.nav-links a:hover {
+  text-decoration: none !important;
+  border-bottom: none !important;
   color: #222;
   background: var(--primary);
   box-shadow: 0 2px 8px #c9a15a44;
   font-weight: bold;
-  text-decoration: none;
 }
 
 /* Hamburger styles */
